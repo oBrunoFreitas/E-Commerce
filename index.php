@@ -2,22 +2,20 @@
 
 require_once("vendor/autoload.php");
 
-$app = new \Slim\Slim();
+use \Slim\Slim;
+use \config\Page;
+
+$app = new Slim();
 
 
 $app->config('debug', true);
 
 $app->get('/', function() {
     
-	$sql = new config\DB\Sql();
-    $teste = $sql->select("select * from tbusers");
+	$page = new Page();
 
-    echo '<pre>';
-    print_r($teste);
-    echo '</pre>';
-    
+    $page->setTpl("index");
 
-    // echo json_decode($teste);
 
 });
 
